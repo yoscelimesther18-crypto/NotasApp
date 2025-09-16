@@ -1,92 +1,114 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.container {
-  width: 90%;
-  max-width: 800px;
-  margin: auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+header {
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-.note-form {
+.formulario {
+  margin-bottom: 20px;
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
 }
 
-.note-form input,
-.note-form textarea {
+.formulario input {
   padding: 10px;
-  border-radius: 5px;
+  font-size: 1rem;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  font-size: 1rem;
-  width: 100%;
+  width: 250px;
 }
 
-.note-form button {
-  padding: 10px;
+.formulario button {
+  padding: 10px 20px;
+  font-size: 1rem;
   border: none;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 10px;
+  background-color: #ffd966;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease;
 }
 
-.note-form button:hover {
-  background-color: #45a049;
+.formulario button:hover {
+  background-color: #f1c232;
 }
 
-.notes-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 1000px;
 }
 
-.note {
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #e7f3fe;
-  border: 1px solid #a0c4ff;
+.nota {
+  position: relative;
+  background-color: #fff9c4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.15);
+  word-wrap: break-word;
+  transition: transform 0.2s ease;
+  transform: rotate(-1deg);
 }
 
-@media screen and (max-width: 600px) {
-  .container {
-    width: 100%;
-    padding: 10px;
-  }
+.nota:nth-child(even) {
+  background-color: #c8e6c9;
+  transform: rotate(1deg);
+}
 
-  h1 {
-    font-size: 1.5rem;
-  }
+.nota:nth-child(3n) {
+  background-color: #bbdefb;
+  transform: rotate(-2deg);
+}
 
-  .note-form input,
-  .note-form textarea {
-    font-size: 0.9rem;
-  }
+.nota:hover {
+  transform: scale(1.05);
+}
 
-  .note-form button {
-    font-size: 0.9rem;
-  }
+.nota h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.nota p {
+  font-size: 1rem;
+  color: #444;
+}
+
+.eliminar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.eliminar:hover {
+  background: #cc0000;
 }
 
 
