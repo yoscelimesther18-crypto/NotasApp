@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Notas</title>
+
+  <!-- Open Graph (vista previa al compartir) -->
+<meta property="og:title" content="Mis Notas 🌼">
+<meta property="og:description" content="un pequeño espacio para grandes ideas ♡">
+<meta property="og:image" content="https://yoscelimesther18-crypto.github.io/imagenes/open graph.jpeg">
+<meta property="og:url" content="https://yoscelimesther18-crypto.github.io/NotasApp/">
+<meta property="og:type" content="website">
+
+<!-- Para WhatsApp / móviles -->
+<meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fuente cute -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./CSS/style.css">
+
+  <!-- icono de pestaña -->
+  <link rel="icon" type="image/png" href="./imagenes/icono fresa.png">
+</head>
+
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <h1> Mis Notas 🌼</h1>
+    <p class="subtitulo">✦ 작은 아이디어, 생각보다 더 멀리 갈 수 있어요 ✦</p>
+  </header>
+
+  <!-- Formulario -->
+  <section class="formulario">
+
+  <img src="imagenes/libros cute.png" class="sticker-form izquierda">
+  <img src="imagenes/milk corea.png" class="sticker-form derecha">
+
+    <input type="text" id="titulo" placeholder="☆ Título de la nota ☆">
+    <input type="text" id="contenido" placeholder="❀ Escribe tus ideas...❀  ">
+
+    <!-- PRIORIDAD -->
+    <div class="prioridad-bar">
+     <span class="label">Prioridad:</span>
+
+      <div class="opciones">
+      <div class="opcion baja" data-value="baja"></div>
+      <div class="opcion media" data-value="media"></div>
+      <div class="opcion alta" data-value="alta"></div>
+     </div>
+    </div>
+
+    <button id="btnAgregar">Agregar nota ♡</button>
+  </section>
+
+  <!-- Notas -->
+  <main id="contenedorNotas"></main>
+
+  <div id="modalEliminar" class="modal oculto">
+  <div class="modal-contenido">
+    <p>¿Eliminar esta nota? 🥺</p>
+    <div class="modal-botones">
+      <button id="cancelar">Cancelar</button>
+      <button id="confirmar">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Script -->
+  <script src="./JS/script.js"></script>
+
+  <!-- Evento botón -->
+  <script>
+    document.getElementById("btnAgregar").addEventListener("click", agregarNota);
+  </script>
+
+<footer>
+  <p>
+    ✧ made with love by 
+    <a href="https://www.instagram.com/_yoxsindefensis?igsh=MXJoazQybTN6Nzl1cQ%3D%3D&utm_source=qr" target="_blank">Yoscelim</a>
+    ✧
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,115 +1,518 @@
+/* Base */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f3f3f3;
+  font-family: 'Quicksand', sans-serif;
+  background: #fffafc;
   margin: 0;
   padding: 20px;
+  color: #444;
+
+  background-image: radial-gradient(#f3c6d3 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  color: #ff8fab;
+}
+
+.subtitulo {
+  font-size: 0.9rem;
+  color: #b5838d;
+}
+
+/* Formulario */
+.formulario {
+  max-width: 420px;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
-
-header {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h1 {
-  font-size: 2.5rem;
-  color: #333;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-.formulario {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 10px;
-}
-
-.formulario input {
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  width: 250px;
-}
-
-.formulario button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  background-color: #ffd966;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.formulario button:hover {
-  background-color: #f1c232;
-}
-
-main {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  width: 100%;
-  max-width: 1000px;
-}
-
-.nota {
-  position: relative;
-  background-color: #fff9c4;
+  gap: 12px;
+  background: #fff;
   padding: 20px;
+  border-radius: 20px;
+  border: 2px dashed #ffd6e0;
+  box-shadow: 0 10px 25px rgba(255, 170, 190, 0.2);
+
+  position: relative; /* 🔥 clave */
+  overflow: visible;
+}
+
+/* contenido por encima de stickers */
+.formulario {
+  position: relative;
+  z-index: 2;
+}
+
+/* STICKERS PEGADOS A LA CAJA */
+.sticker-form {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* izquierda */
+.sticker-form.izquierda {
+  left: -195px;
+  bottom: -10px;
+  width: 250px;
+  transform: rotate(-5deg);
+}
+
+/* derecha */
+.sticker-form.derecha {
+  right: -180px;
+  bottom: -10px;
+  width: 250px;
+  transform: rotate(5deg);
+}
+
+/* sombra tipo sticker */
+.sticker-form {
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15));
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .sticker-form.izquierda {
+    left: -70px;
+    width: 110px;
+  }
+
+  .sticker-form.derecha {
+    right: -70px;
+    width: 110px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sticker-form {
+    display: none;
+  }
+}
+
+/* Inputs */
+input {
+  padding: 12px;
   border-radius: 10px;
-  box-shadow: 2px 4px 8px rgba(0,0,0,0.15);
-  word-wrap: break-word;
-  transition: transform 0.2s ease;
-  transform: rotate(-1deg);
+  border: none;
+  background: #fff0f5;
+  font-size: 0.9rem;
 }
 
-.nota:nth-child(even) {
-  background-color: #c8e6c9;
-  transform: rotate(1deg);
+input, button {
+  position: relative;
+  z-index: 2;
 }
 
-.nota:nth-child(3n) {
-  background-color: #bbdefb;
-  transform: rotate(-2deg);
+input:focus {
+  outline: 2px solid #ffb3c6;
 }
 
-.nota:hover {
+input::placeholder {
+  color: #aaa;
+}
+
+/* ♡ Botón */
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #ff8fab;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #ff6f91;
   transform: scale(1.05);
 }
 
+/* Contenedor */
+#contenedorNotas {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Nota */
+.nota {
+  background: #fff;
+  padding: 15px;
+  padding-right: 50px;
+  border-radius: 18px;
+  position: relative;
+  border: 2px solid #ffe5ec;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+  animation: aparecer 0.3s ease;
+}
+
+.nota:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+/* 📌 Sticker */
+.nota::before {
+  content: "📌";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  font-size: 1.3rem;
+}
+
+/* Texto */
 .nota h2 {
-  margin: 0 0 10px 0;
-  font-size: 1.2rem;
-  color: #222;
+  font-size: 1.1rem;
+  color: #ff7aa2;
+  margin-bottom: 8px;
 }
 
 .nota p {
-  font-size: 1rem;
-  color: #444;
+  font-size: 0.9rem;
+  color: #555;
 }
 
+/* ❌ Botón eliminar */
 .eliminar {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #ff4d4d;
-  border: none;
-  color: white;
+  background: #ffd6e0;
+  color: #ff4d6d;
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.2s;
+  transition: all 0.2s ease;
 }
 
 .eliminar:hover {
-  background: #cc0000;
+  background: #ffb3c6;
+  transform: scale(1.1);
 }
 
+/* ✏️ Botón editar */
+.editar {
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  background: #fff3b0;
+  color: #b08900;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
 
+.editar:hover {
+  background: #ffe066;
+  transform: scale(1.1);
+}
 
+/* Prioridades */
+.nota.baja { border-left: 8px solid #b7efc5; }
+.nota.media { border-left: 8px solid #ffe066; }
+.nota.alta { border-left: 8px solid #ff8fa3; }
+
+/* Etiqueta */
+.prioridad {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  background: #fff0f5;
+  color: #ff6f91;
+}
+
+/* Animación */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Barra prioridad */
+.prioridad-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: #b5838d;
+}
+
+.opciones {
+  display: flex;
+  gap: 10px;
+}
+
+.opcion {
+  flex: 1;
+  height: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.5;
+}
+
+.opcion.baja { background: #b7efc5; }
+.opcion.media { background: #ffe066; }
+.opcion.alta { background: #ffadad; }
+
+.opcion:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.opcion.activa {
+  opacity: 1;
+  height: 16px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* Fondo oscuro */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+  backdrop-filter: blur(4px); /* efecto bonito */
+}
+
+/* oculto */
+.oculto {
+  display: none;
+}
+
+/* Caja del modal */
+.modal-contenido {
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  width: 280px;
+
+  border: 2px dashed #ffd6e0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  animation: aparecerModal 0.2s ease;
+}
+
+/* texto */
+.modal-contenido p {
+  margin-bottom: 15px;
+  color: #ff6f91;
+  font-size: 0.9rem;
+}
+
+/* botones */
+.modal-botones {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-botones button {
+  flex: 1;
+  border-radius: 12px;
+}
+
+/* cancelar */
+#cancelar {
+  background: #eee;
+  color: #555;
+}
+
+#cancelar:hover {
+  background: #ddd;
+}
+
+/* eliminar */
+#confirmar {
+  background: #ff8fa3;
+  color: white;
+}
+
+#confirmar:hover {
+  background: #ff6f91;
+}
+
+/* animación */
+@keyframes aparecerModal {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .formulario {
+    max-width: 90%;
+    padding: 18px;
+  }
+
+  #contenedorNotas {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .sticker-form.izquierda {
+    left: -120px;
+    width: 180px;
+  }
+
+  .sticker-form.derecha {
+    right: -120px;
+    width: 180px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .subtitulo {
+    font-size: 0.75rem;
+  }
+
+  .formulario {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  input {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  #contenedorNotas {
+    grid-template-columns: 1fr; /* 🔥 una sola columna */
+  }
+
+  /* Ocultar stickers en móvil */
+  .sticker-form {
+    display: none;
+  }
+
+  .nota {
+    padding-right: 45px;
+  }
+
+  .nota h2 {
+    font-size: 1rem;
+  }
+
+  .nota p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Footer cute */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  padding: 15px;
+
+  font-size: 0.75rem;
+  color: #b5838d;
+
+  background: #fff0f5;
+  border-radius: 15px;
+
+  border: 2px dashed #ffd6e0;
+  box-shadow: 0 5px 15px rgba(255, 170, 190, 0.15);
+
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* texto */
+footer p {
+  letter-spacing: 0.5px;
+}
+
+/* nombre o marca */
+footer span {
+  color: #ff8fab;
+  font-weight: 600;
+}
+
+/* hover suave */
+footer:hover {
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+
+/* link del footer */
+footer a {
+  color: #ff8fab;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+/* efecto cute */
+footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: #ff8fab;
+  transition: width 0.3s ease;
+}
+
+/* hover */
+footer a:hover::after {
+  width: 100%;
+}
+
+/* pequeño glow */
+footer a:hover {
+  color: #ff6f91;
+}
