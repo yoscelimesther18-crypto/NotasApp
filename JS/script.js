@@ -1,6 +1,7 @@
 // Variables globales
 let prioridadSeleccionada = "baja";
 let notaAEliminar = null;
+let editandoActiva = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarNotas();
@@ -34,8 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("confirmar").addEventListener("click", () => {
     if (notaAEliminar !== null) {
       const notas = obtenerNotas();
-
-      // eliminar correctamente por ID
       const nuevasNotas = notas.filter(n => n.id !== notaAEliminar);
 
       guardarNotas(nuevasNotas);
@@ -68,7 +67,7 @@ function agregarNota() {
   const notas = obtenerNotas();
 
   notas.push({
-    id: Date.now(), // ID único
+    id: Date.now(),
     titulo,
     contenido,
     prioridad: prioridadSeleccionada
@@ -81,7 +80,7 @@ function agregarNota() {
   document.getElementById("contenido").value = "";
 }
 
-// Cargar notas (ordenadas)
+// Cargar notas
 function cargarNotas() {
   const contenedor = document.getElementById("contenedorNotas");
   contenedor.innerHTML = "";
@@ -99,6 +98,8 @@ function cargarNotas() {
   notas.forEach(nota => {
     crearNota(nota);
   });
+
+  editandoActiva = false;
 }
 
 // Crear nota
@@ -130,16 +131,20 @@ function crearNota(nota) {
     mostrarModal(nota.id);
   });
 
-  // editar inline
+  // editar
   div.querySelector(".editar").addEventListener("click", () => {
+    if (editandoActiva) return; // evita múltiples ediciones
     activarEdicion(div, nota);
   });
 
   contenedor.appendChild(div);
 }
 
-// Activar edición en la misma nota
+// Activar edición
 function activarEdicion(div, nota) {
+  editandoActiva = true;
+  div.classList.add("editando");
+
   div.innerHTML = `
     <input class="edit-titulo" value="${nota.titulo}">
     <textarea class="edit-contenido">${nota.contenido}</textarea>
@@ -150,10 +155,13 @@ function activarEdicion(div, nota) {
     </div>
   `;
 
-  // guardar cambios
-  div.querySelector(".guardar").addEventListener("click", () => {
-    const nuevoTitulo = div.querySelector(".edit-titulo").value.trim();
-    const nuevoContenido = div.querySelector(".edit-contenido").value.trim();
+  const inputTitulo = div.querySelector(".edit-titulo");
+  const inputContenido = div.querySelector(".edit-contenido");
+
+  // guardar función
+  function guardarCambios() {
+    const nuevoTitulo = inputTitulo.value.trim();
+    const nuevoContenido = inputContenido.value.trim();
 
     if (nuevoTitulo === "" || nuevoContenido === "") {
       alert("No puede estar vacío");
@@ -175,21 +183,31 @@ function activarEdicion(div, nota) {
 
     guardarNotas(nuevasNotas);
     cargarNotas();
+  }
+
+  // botón guardar
+  div.querySelector(".guardar").addEventListener("click", guardarCambios);
+
+  // Enter en edición
+  inputTitulo.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      guardarCambios();
+    }
   });
 
-  // cancelar edición
+  // cancelar
   div.querySelector(".cancelar-edit").addEventListener("click", () => {
     cargarNotas();
   });
 }
 
-// Mostrar modal
+// Modal
 function mostrarModal(id) {
   notaAEliminar = id;
   document.getElementById("modalEliminar").classList.remove("oculto");
 }
 
-// Cerrar modal
 function cerrarModal() {
   document.getElementById("modalEliminar").classList.add("oculto");
   notaAEliminar = null;
