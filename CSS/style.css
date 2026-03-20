@@ -10,6 +10,10 @@ body {
   background-size: 20px 20px;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 /* Header */
 header {
   text-align: center;
@@ -29,6 +33,8 @@ header h1 {
 /* Formulario */
 .formulario {
   max-width: 420px;
+  width: 100%;
+  box-sizing: border-box;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -50,6 +56,7 @@ header h1 {
   z-index: 0;
   pointer-events: none;
   filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15));
+  max-width: 100%;
 }
 
 .sticker-form.izquierda {
@@ -109,8 +116,9 @@ button:hover {
 #contenedorNotas {
   margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
 /* Nota */
@@ -373,4 +381,97 @@ footer {
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* MOBILE FIX REAL */
+@media (max-width: 600px) {
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .subtitulo {
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  .formulario {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  input,
+  textarea,
+  button {
+    width: 100%;
+  }
+
+  #contenedorNotas {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .nota {
+    width: 100%;
+  }
+
+  .sticker-form {
+    display: none;
+  }
+}
+
+  /* FORMULARIO FULL WIDTH */
+  .formulario {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+  }
+
+  /* INPUTS */
+  input,
+  textarea {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  /* NOTAS EN UNA SOLA COLUMNA */
+  #contenedorNotas {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /* AJUSTE DE TARJETAS */
+  .nota {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* BOTONES NO ENCIMADOS */
+  .eliminar,
+  .editar {
+    right: 8px;
+  }
+
+  /* STICKERS FUERA (CLAVE) */
+  .sticker-form {
+    display: none;
+  }
+
+* {
+  box-sizing: border-box;
 }
