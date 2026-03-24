@@ -1,3 +1,12 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
 /* Base */
 body {
   font-family: 'Quicksand', sans-serif;
@@ -5,13 +14,8 @@ body {
   margin: 0;
   padding: 20px;
   color: #444;
-
   background-image: radial-gradient(#f3c6d3 1px, transparent 1px);
   background-size: 20px 20px;
-}
-
-html, body {
-  overflow-x: hidden;
 }
 
 /* Header */
@@ -34,7 +38,6 @@ header h1 {
 .formulario {
   max-width: 420px;
   width: 100%;
-  box-sizing: border-box;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -46,7 +49,6 @@ header h1 {
   box-shadow: 0 10px 25px rgba(255, 170, 190, 0.2);
 
   position: relative;
-  overflow: visible;
   z-index: 2;
 }
 
@@ -56,20 +58,19 @@ header h1 {
   z-index: 0;
   pointer-events: none;
   filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15));
-  max-width: 100%;
 }
 
 .sticker-form.izquierda {
-  left: -195px;
+  left: -155px;
   bottom: -10px;
-  width: 250px;
+  width: 200px;
   transform: rotate(-5deg);
 }
 
 .sticker-form.derecha {
-  right: -180px;
+  right: -140px;
   bottom: -10px;
-  width: 250px;
+  width: 200px;
   transform: rotate(5deg);
 }
 
@@ -91,11 +92,7 @@ input:focus {
   outline: 2px solid #ffb3c6;
 }
 
-input::placeholder {
-  color: #aaa;
-}
-
-/* Botón */
+/* Botones */
 button {
   padding: 12px;
   border: none;
@@ -112,13 +109,12 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Contenedor */
+/* Contenedor notas */
 #contenedorNotas {
-  margin-top: 30px;
+  margin: 30px 0 50px 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
-  width: 100%;
 }
 
 /* Nota */
@@ -130,7 +126,6 @@ button:hover {
   position: relative;
   border: 2px solid #ffe5ec;
   box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-  transition: all 0.2s ease;
   animation: aparecer 0.3s ease;
 }
 
@@ -143,14 +138,12 @@ button:hover {
   position: absolute;
   top: -12px;
   left: -12px;
-  font-size: 1.3rem;
 }
 
 /* Texto */
 .nota h2 {
   font-size: 1.1rem;
   color: #ff7aa2;
-  margin-bottom: 8px;
 }
 
 .nota p {
@@ -158,7 +151,7 @@ button:hover {
   color: #555;
 }
 
-/* Botones */
+/* Botones nota */
 .eliminar {
   position: absolute;
   top: 10px;
@@ -168,7 +161,6 @@ button:hover {
   border-radius: 50%;
   width: 28px;
   height: 28px;
-  cursor: pointer;
 }
 
 .editar {
@@ -180,7 +172,6 @@ button:hover {
   border-radius: 50%;
   width: 28px;
   height: 28px;
-  cursor: pointer;
 }
 
 /* Prioridades */
@@ -190,7 +181,6 @@ button:hover {
 
 /* Etiqueta */
 .prioridad {
-  display: inline-block;
   margin-top: 10px;
   padding: 4px 10px;
   border-radius: 20px;
@@ -205,34 +195,12 @@ button:hover {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Barra prioridad */
-.prioridad-bar { display: flex; flex-direction: column; gap: 5px; }
-.opciones { display: flex; gap: 10px; }
-
-.opcion {
-  flex: 1;
-  height: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  opacity: 0.5;
-}
-
-.opcion.baja { background: #b7efc5; }
-.opcion.media { background: #ffe066; }
-.opcion.alta { background: #ffadad; }
-
-.opcion.activa {
-  opacity: 1;
-  height: 16px;
-}
-
 /* Modo edición */
 .nota.editando {
   background: #fff7fb;
   border: 2px dashed #ffc2d1;
 }
 
-/* Inputs en modo edición */
 .edit-titulo,
 .edit-contenido {
   width: 100%;
@@ -240,69 +208,32 @@ button:hover {
   border: 2px dashed #ffd6e0;
   padding: 12px;
   margin-bottom: 10px;
-
   background: #fff0f5;
-
   font-family: 'Quicksand', sans-serif;
-  font-size: 0.9rem;
-  color: #555;
-
-  outline: none;
-  transition: all 0.2s ease;
 }
 
-/* efecto focus bonito */
-.edit-titulo:focus,
-.edit-contenido:focus {
-  border: 2px solid #ffb3c6;
-  background: #fff;
-}
-
-/* textarea más estética */
 .edit-contenido {
-  resize: none;
   height: 90px;
-  line-height: 1.4;
+  resize: none;
 }
 
-/* placeholder cute */
-.edit-titulo::placeholder,
-.edit-contenido::placeholder {
-  color: #caa;
-}
-
-/* contenedor edición */
 .acciones-edit {
   display: flex;
   gap: 10px;
-  margin-top: 5px;
 }
 
-/* botón guardar */
 .guardar {
   background: #b7efc5;
   color: #2d6a4f;
-  border-radius: 12px;
+  flex: 1;
 }
 
-.guardar:hover {
-  background: #95d5b2;
-}
-
-/* botón cancelar */
 .cancelar-edit {
   background: #ffd6e0;
   color: #ff4d6d;
-  border-radius: 12px;
+  flex: 1;
 }
 
-.cancelar-edit:hover {
-  background: #ffb3c6;
-}
-
-.edit-contenido {
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-}
 /* Modal */
 .modal {
   position: fixed;
@@ -317,7 +248,9 @@ button:hover {
   z-index: 9999;
 }
 
-.oculto { display: none; }
+.oculto {
+  display: none;
+}
 
 .modal-contenido {
   background: #fff;
@@ -325,153 +258,106 @@ button:hover {
   border-radius: 20px;
   width: 280px;
   border: 2px dashed #ffd6e0;
+  text-align: center;
 }
 
-/* Link del footer */
+/* Footer */
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #b5838d;
+  background: #fff0f5;
+  border-radius: 15px;
+  border: 2px dashed #ffd6e0;
+  max-width: 400px;
+  margin: auto;
+}
+
 footer a {
   color: #ff8fab;
   text-decoration: none;
-  font-weight: 600;
   position: relative;
-  transition: all 0.2s ease;
 }
 
-/* línea animada */
 footer a::after {
   content: "";
   position: absolute;
-  left: 0;
   bottom: -3px;
   width: 0%;
   height: 2px;
   background: #ff8fab;
-  transition: width 0.3s ease;
+  transition: 0.3s;
 }
 
-/* hover */
 footer a:hover::after {
   width: 100%;
 }
 
-/* efecto glow suave */
-footer a:hover {
-  color: #ff6f91;
-  text-shadow: 0 0 6px rgba(255, 143, 171, 0.4);
-}
-
-footer {
-  margin-top: 40px;
-  padding: 15px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-
-  font-size: 0.75rem;
-  color: #b5838d;
-
-  background: #fff0f5;
-  border-radius: 15px;
-
-  border: 2px dashed #ffd6e0;
-  box-shadow: 0 5px 15px rgba(255, 170, 190, 0.15);
-
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* MOBILE FIX REAL */
+/* MOBILE */
 @media (max-width: 600px) {
-
-  html, body {
-    overflow-x: hidden;
-  }
-
   body {
     padding: 10px;
   }
 
-  header h1 {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-
-  .subtitulo {
-    text-align: center;
-    font-size: 0.75rem;
-  }
-
   .formulario {
-    width: 100%;
     max-width: 100%;
-    padding: 15px;
   }
 
-  input,
-  textarea,
-  button {
+  input, button {
     width: 100%;
   }
 
   #contenedorNotas {
     grid-template-columns: 1fr;
-    width: 100%;
-  }
-
-  .nota {
-    width: 100%;
   }
 
   .sticker-form {
     display: none;
   }
 }
+/* BARRA DE PRIORIDAD */
+.prioridad-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 5px;
+}
 
-  /* FORMULARIO FULL WIDTH */
-  .formulario {
-    max-width: 100%;
-    width: 100%;
-    margin: 0 auto;
-    padding: 15px;
-  }
+.label {
+  font-size: 0.8rem;
+  color: #b5838d;
+}
 
-  /* INPUTS */
-  input,
-  textarea {
-    width: 100%;
-    font-size: 0.9rem;
-  }
+.opciones {
+  display: flex;
+  gap: 10px;
+}
 
-  button {
-    width: 100%;
-  }
+.opcion {
+  flex: 1;
+  height: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
 
-  /* NOTAS EN UNA SOLA COLUMNA */
-  #contenedorNotas {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
+/* colores */
+.opcion.baja { background: #b7efc5; }
+.opcion.media { background: #ffe066; }
+.opcion.alta { background: #ffadad; }
 
-  /* AJUSTE DE TARJETAS */
-  .nota {
-    width: 100%;
-    margin: 0 auto;
-  }
+/* hover */
+.opcion:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
 
-  /* BOTONES NO ENCIMADOS */
-  .eliminar,
-  .editar {
-    right: 8px;
-  }
-
-  /* STICKERS FUERA (CLAVE) */
-  .sticker-form {
-    display: none;
-  }
-
-* {
-  box-sizing: border-box;
+/* activa */
+.opcion.activa {
+  opacity: 1;
+  height: 16px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }

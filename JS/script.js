@@ -154,6 +154,7 @@ function activarEdicion(div, nota) {
       <button class="cancelar-edit">Cancelar</button>
     </div>
   `;
+  div.classList.add("editando");
 
   const inputTitulo = div.querySelector(".edit-titulo");
   const inputContenido = div.querySelector(".edit-contenido");

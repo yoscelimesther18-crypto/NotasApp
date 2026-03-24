@@ -1,4 +1,4 @@
-# 🧁 Mis Notas Cute
+# Mis Notas
 
 Aplicación web para crear, organizar y gestionar notas con una estética **cute coreana** 
 Desarrollada con **HTML, CSS y JavaScript** puro.
@@ -12,7 +12,7 @@ Incluye funcionalidades interactivas y una interfaz pensada en la experiencia de
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 * Crear notas
 * Eliminar notas con confirmación (modal personalizado)
@@ -76,7 +76,6 @@ Este proyecto fue desarrollado como práctica para fortalecer mis habilidades co
 ## Autor
 
 ✧ Hecho con amor por **Yoscelim** ✧
-Instagram: https://www.instagram.com/_yoxsindefensis?igsh=MXJoazQybTN6Nzl1cQ%3D%3D&utm_source=qr
 Celular: 3169897732
 Correo: yoscelimesther18@gmail.com
 
